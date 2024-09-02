@@ -8,8 +8,6 @@ body {
     
 }
 
-.Title,
-.tasks,
 .form {
   margin: 2%;
   display: flex;
@@ -17,15 +15,21 @@ body {
   justify-content: center;
 }
 
-.Title {
-  margin: 5%;
-}
 .tasks {
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
 .form{
-    margin-top: 10%;
+    margin-top: 5%;
 }

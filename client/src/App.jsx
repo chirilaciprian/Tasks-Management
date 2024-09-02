@@ -26,43 +26,39 @@ function App() {
   }, []);
   return (
     <>
-    
-      
-      <div className="form">
-        
-        <TextField
-          sx={{ marginRight: "15px"}}
-          id="outlined-basic"
-          label="Add Tasks"
-          variant="outlined"
-          type="text"
-          placeholder="Add Tasks"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
-        <Fab          
-          color="primary"
-          aria-label="add"
-          onClick={() => addTask(text, setText, setTask)}
-        >
-          <AddIcon />
-        </Fab>
+      <div className="container">
+        <div className="form">
+          <TextField
+            sx={{ marginRight: "15px" }}
+            id="outlined-basic"
+            label="Add Tasks"
+            variant="outlined"
+            type="text"
+            placeholder="Add Tasks"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
+          <Fab
+            color="primary"
+            aria-label="add"
+            onClick={() => addTask(text, setText, setTask)}
+          >
+            <AddIcon />
+          </Fab>
+        </div>
+        <Stack className="tasks" spacing={1.5} sx={{padding: 0}}>
+          {task != null &&
+            task.map((item) => (
+              <Task sx={{padding: 0}}            
+                key={item._id}
+                action={item.action}
+                completed={item.done}
+                deleteTask={() => deleteTask(item._id, setTask)}
+                updateTask={() => updateTask(item._id, setTask)}
+              />
+            ))}
+        </Stack>
       </div>
-      <Stack className="tasks" spacing={2}>
-        
-      
-        {task != null &&
-          task.map((item) => (
-            <Task
-              key={item._id}
-              action={item.action}
-              completed={item.done}
-              deleteTask={() => deleteTask(item._id, setTask)}
-              updateTask={() => updateTask(item._id, setTask)}
-            />
-          ))}
-      </Stack>
-      
     </>
   );
 }
